@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Opções</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body{font-family: Helvetica, Arial, sans-serif}
+#header{margin:17px 0; overflow:hidden; padding:17px 0; position:relative}
+#header h1{background:url(icon.png) no-repeat 0px; background-size:66px 66px; display:inline; margin:0; font-size:24px; padding-bottom:43px; padding-left:75px; padding-top:50px;}
+.section-header{margin-top:16px; background:#EBEFF9; border-top:1px solid #B5C7DE; font-size:95%; padding-bottom:2px; padding-left:5px; padding-top:3px; font-weight:bold; text-decoration:none;font-weight:normal; display:block}
+.section{background:#F4F6FC; border-bottom:1px solid #EDEFF5; font-size:85%; padding-bottom:0.8em; padding-left:10px; padding-top:0.8em;}
+</style>
+<script type="text/javascript">
+if(!localStorage.FirstRun){localStorage.FirstRun=true;localStorage.OnScreenDownload=true}
+var links
+var MP3Status
+var MP3Progress
+
+function $(id){return document.getElementById(id)}
+function Load(){
+	if(localStorage.OnScreenDownload){$('Op1').checked=true}
+	if(localStorage.ContextMenu){$('Op2').checked=true}
+	if(localStorage.PageAction){$('Op3').checked=true}
+}
+function Save(){
+	if($('Op1').checked){localStorage.OnScreenDownload=true}else{delete localStorage.OnScreenDownload}
+	if($('Op2').checked){localStorage.ContextMenu=true}else{delete localStorage.ContextMenu}
+	if($('Op3').checked){localStorage.PageAction=true}else{delete localStorage.PageAction}
+}
+function Download(linkd){chrome.tabs.create({'url':linkd,'selected':false})}
+
+chrome.extension.onRequest.addListener(function(request,sender,response){
+	if(request.title == 'SubmitDownloadLinks'){
+		links = request.content
+		if(localStorage.OnScreenDownload){
+			response({activateOSD:true})
+		}//;alert('tento injetoa')
+		//chrome.tabs.executeScript(sender.tab.id,{file: "mp3.js"}, function(){});alert('injeto')
+		if(localStorage.ContextMenu){
+			var linkdiv=document.createElement('div');linkdiv.innerHTML=links;d=linkdiv=linkdiv.getElementsByTagName('a')
+			for(i=0;i<linkdiv.length;i++){
+				//chrome.contextMenus.create({'type':'normal', 'title':linkdiv[i].innerHTML, 'onclick': Download(linkdiv[i].href)});
+			}
+		}
+		if(localStorage.PageAction){
+			chrome.pageAction.setIcon({tabId:sender.tab.id, path:'icon.png'})
+			chrome.pageAction.setPopup({tabId:sender.tab.id, popup:'PageActions.html'})
+			chrome.pageAction.setTitle({tabId:sender.tab.id, title:chrome.i18n.getMessage("Botao_alt")})
+		 	chrome.pageAction.show(sender.tab.id)
+		}
+	}else if(request.title == 'RequestDownloadLinks'){
+	 	response({links:links})
+	}else if(request.title == 'ConvertMP3Status'){
+		MP3Progress=request.progress
+		MP3Status=request.status
+	}else if(request.title == 'RquestMP3Status'){
+		response({progress:MP3Progress, status:MP3Status})
+	}
+})
+</script>
+</head>
+<body onLoad="Load()">
+
+<div id="header"><h1>Settings</h1></div>
+
+<span class="section-header">Settings</span>
+<div class="section">
+<input type="checkbox" id="Op1" onClick="Save()" /><span>Button below the video</span><br>
+<input type="checkbox" id="Op2" onClick="Save()" disabled /><span>Link on context menu(right click on the page)(Coming soon)</span><br>
+<input type="checkbox" id="Op3" onClick="Save()" /><span>Icon on address bar</span><br>
+</div>
+
+<span class="section-header" style="display:none">Sobre</span>
+<div class="section" style="display:none">
+YouTube Downloader é uma extensão gratuita desenvolvida por Anoniamto(Flavio Bayer)<br>
+Para mais informações acesse <a href="">YouTubeDownloader.Anoniamto.com</a><br>
+Help us translate the extension, or send your feedback:<br>
+<a href="">http://YouTubeDownloader.anoniamto.com/#help</a><br>
+Special thanks for the translators:<br>
+<a href="">http://YouTubeDownloader.anoniamto.com/#ctbt</a><br>
+</div>
+
+</body>
+</html>

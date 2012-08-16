@@ -1,0 +1,11 @@
+{
+   "Botao_alt": {
+      "message": "\u3053\u306E\u52D5\u753B\u3092\u30C0\u30A6\u30F3\u30ED\u30FC\u30C9\uFF01"
+   },
+   "Botao_txt": {
+      "message": "\u30C0\u30A6\u30F3\u30ED\u30FC\u30C9"
+   },
+   "Descricao": {
+      "message": "\u30E6\u30FC\u30C1\u30E5\u30FC\u30D6\u306E\u52D5\u753B\u306E\u3069\u308C\u3067\u3082\u30C0\u30A6\u30F3\u30ED\u30FC\u30C9"
+   }
+}

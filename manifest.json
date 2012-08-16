@@ -1,0 +1,26 @@
+{
+   "background_page": "background.html",
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "Script.js" ],
+      "matches": [ "*://*.youtube.com/*", "*://*.youtube.com.br/*", "*://*.youtube.fr/*", "*://*.youtube.jp/*", "*://*.youtube.nl/*", "*://*.youtube.pl/*", "*://*.youtube.ie/*", "*://*.youtube.co.uk/*", "*://*.youtube.es/*", "*://*.youtube.it/*", "*://*.youtube.com/*", "*://*.youtube.com.br/*", "*://*.youtube.fr/*", "*://*.youtube.jp/*", "*://*.youtube.nl/*", "*://*.youtube.pl/*", "*://*.youtube.ie/*", "*://*.youtube.co.uk/*", "*://*.youtube.es/*", "*://*.youtube.it/*", "*://www.youtube-mp3.org/*" ],
+      "run_at": "document_start"
+   } ],
+   "default_locale": "en_US",
+   "description": "__MSG_Descricao__",
+   "icons": {
+      "128": "icon.png",
+      "16": "icon.png",
+      "32": "icon.png",
+      "48": "icon.png"
+   },
+   "minimum_chrome_version": "6",
+   "name": "Dr.Newton Youtube Downloader",
+   "options_page": "background.html",
+   "page_action": {
+
+   },
+   "permissions": [ "tabs", "contextMenus" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "2.2"
+}

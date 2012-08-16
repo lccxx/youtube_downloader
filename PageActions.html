@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+div{cursor:pointer; width:91px; height:24px; background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), to(rgb(223, 223, 223))); border-radius: 3px;box-shadow: rgb(136, 136, 136) 0px 1px 2px 0px; line-height:24px; text-align:center; margin:2px 0}
+div:hover{ background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), to(rgb(235, 235, 235)));box-shadow: rgb(136, 136, 136) 0px 3px 4px 0px;}
+div a{font-family: arial, sans-serif; font-size: 12px;color: #333; text-decoration:none}
+body,html{padding:0px; margin:0px}
+</style>
+<script type="text/javascript">
+chrome.extension.sendRequest({title:'RequestDownloadLinks'},function(response){
+	document.body.innerHTML=response.links
+	for(i=0;i<document.getElementsByTagName('a').length;i++){
+		document.getElementsByTagName('a')[i].href='javascript:chrome.tabs.create({\'url\':\''+document.getElementsByTagName('a')[i].href+'\',\'selected\':false})'
+		document.getElementsByTagName('div')[i].onClick='chrome.tabs.create({\'url\':\''+document.getElementsByTagName('a')[i].href+'\',\'selected\':false})'
+	}
+	}
+);
+</script>
+</head>
+
+<body>
+</body>
+</html>
