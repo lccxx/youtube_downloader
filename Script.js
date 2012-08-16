@@ -94,7 +94,7 @@ window.addEventListener('DOMContentLoaded', function(){
 	if(document.getElementById('watch-actions') && links !== '' && !document.getElementById('watch-download')){//Normal/CosmicPanda
 	var dlb = document.createElement('button');
 		dlb.setAttribute('id', 'watch-download')
-		if(CosmicPanda){dlb.setAttribute('class', 'yt-uix-button yt-uix-tooltip')}else{dlb.setAttribute('class', 'yt-uix-button yt-uix-tooltip yt-uix-tooltip-reverse')}
+		if(CosmicPanda){dlb.setAttribute('class', 'yt-uix-button yt-uix-tooltip yt-uix-button-default')}else{dlb.setAttribute('class', 'yt-uix-button yt-uix-tooltip yt-uix-tooltip-reverse yt-uix-button-default')}
 		dlb.setAttribute('data-tooltip', textlang[0])
 		dlb.setAttribute('data-tooltip-title', textlang[0])
 		dlb.setAttribute('title', textlang[0])

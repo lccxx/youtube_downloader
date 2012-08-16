@@ -15,7 +15,7 @@
       "48": "icon.png"
    },
    "minimum_chrome_version": "6",
-   "name": "Dr.Newton Youtube Downloader",
+   "name": "Dr.Newton Downloader",
    "options_page": "background.html",
    "page_action": {
 
