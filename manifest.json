@@ -7,7 +7,7 @@
       "run_at": "document_start"
    } ],
    "default_locale": "en_US",
-   "description": "__MSG_extensiondescription__",
+   "description": "Download any YouTube video",
    "icons": {
       "128": "icon.png",
       "16": "icon.png",
@@ -23,5 +23,5 @@
    "permissions": [ "tabs", "contextMenus" ],
    "update_url": "http://clients2.google.com/service/update2/crx",
    "manifest_version": 2,
-   "version": "2.2"
+   "version": "2.2.0.2"
 }
